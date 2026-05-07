@@ -56,7 +56,7 @@ const certCategories = [
     provider: "Industry Visit From School",
     icon: <Award className="text-purple-400" />,
     color: "group-hover:border-purple-500/20",
-    images: ["/certs/dicoding.jpeg"]
+    images: ["/certs/industry-visit.jpeg"]
   },
   { 
     id: 'Achievement Certification',
@@ -65,7 +65,7 @@ const certCategories = [
     provider: "Other Achievements",
     icon: <Award className="text-blue-300" />,
     color: "group-hover:border-blue-500/20",
-    images: ["/certs/dicoding.jpeg"]
+    images: ["/certs/achievement.jpeg"]
   }
   
 ];

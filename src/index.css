@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-dark text-white overflow-x-hidden;
+}
+
+/* Biar pas scroll gak kepotong navbar */
+section {
+  scroll-margin-top: 80px;
+}
+
+/* Animasi Shiny Text */
+.shiny-text {
+  background: linear-gradient(120deg, rgba(255,255,255,0) 30%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 70%);
+  background-size: 200% 100%;
+  animation: shine 3s infinite;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+@keyframes shine {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}

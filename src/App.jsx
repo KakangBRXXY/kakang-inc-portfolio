@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion, useScroll, useSpring } from 'framer-motion';
 import Navbar from './components/Navbar';
+import MobileNavigation from './components/MobileNavigation';
 import Hero from './components/Hero';
 import About from './components/About';
 import Skills from './components/Skills';
@@ -21,6 +22,10 @@ function App() {
   }, []);
 
   return (
+    <div className="bg-dark min-h-screen ...">
+      <Navbar /> {/* Tetap ada, tapi ntar kita sembunyiin bagian menunya di layar kecil */}
+      <MobileNavigation /> {/* Khusus buat HP */}
+
     <div className="bg-dark min-h-screen text-white overflow-x-hidden selection:bg-cyan-500/30">
       <motion.div className="fixed top-0 left-0 right-0 h-1 bg-cyan-500 z-[100] origin-left" style={{ scaleX }} />
       
@@ -40,18 +45,14 @@ function App() {
         <Contact />
       </main>
       
-      {/* --- FOOTER SECTION --- */}
       <footer className="relative pt-24 pb-10 px-6 border-t border-white/5 bg-black/20 overflow-hidden">
-        {/* Background Decoration (Glow di pojok) */}
         <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-cyan-500/5 blur-[120px] pointer-events-none"></div>
         
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-12 mb-16">
             
-            {/* Sisi Kiri: Branding */}
             <div className="space-y-4">
               <div className="flex items-center gap-3">
-              {/* Bagian Logo Baru di Footer */}
               <img 
                 src={logoBrand} 
                 alt="kakang.inc logo" 
@@ -88,7 +89,6 @@ function App() {
             </div>
           </div>
 
-          {/* Bottom Branding (Besar tapi samar) */}
           <div className="relative border-t border-white/5 pt-10 flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="order-2 md:order-1 text-center md:text-left">
               <p className="text-gray-600 text-[10px] uppercase tracking-[0.5em] mb-1">Developed By</p>
@@ -97,7 +97,6 @@ function App() {
               </p>
             </div>
             
-            {/* Status Batch */}
             <div className="order-1 md:order-2 px-4 py-2 bg-white/5 border border-white/10 rounded-full flex items-center gap-3">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
@@ -109,6 +108,7 @@ function App() {
         </div>
       </footer>
     </div>
+  </div>
   );
 }
 

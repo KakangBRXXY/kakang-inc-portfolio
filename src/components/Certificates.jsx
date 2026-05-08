@@ -10,7 +10,6 @@ const certCategories = [
     provider: "Alibaba Cloud",
     icon: <Award className="text-orange-400" />,
     color: "group-hover:border-orange-500/50",
-    // Contoh path gambar (sesuaikan dengan nama file di assets lu nanti)
     images: ["/certs/alibaba-1.jpeg", "/certs/alibaba-2.jpeg", "/certs/alibaba-3.jpeg", "/certs/alibaba-4.jpeg", "/certs/alibaba-5.jpeg", "/certs/alibaba-6.jpeg", "/certs/alibaba-7.jpeg", "/certs/alibaba-8.jpeg", "/certs/alibaba-9.jpeg", "/certs/alibaba-10.jpeg"] 
   },
   { 
@@ -88,7 +87,7 @@ const Certificates = () => {
         {certCategories.map((cert, index) => (
           <motion.div
             key={index}
-            onClick={() => setSelectedCert(cert)} // Klik kartu buat buka
+            onClick={() => setSelectedCert(cert)}
             className={`group p-8 bg-white/[0.02] border border-white/5 rounded-[2rem] transition-all duration-500 cursor-pointer ${cert.color} hover:bg-white/[0.04]`}
           >
             <div className="flex flex-col h-full justify-between">
@@ -113,7 +112,6 @@ const Certificates = () => {
         ))}
       </div>
 
-      {/* MODAL OVERLAY */}
       <AnimatePresence>
         {selectedCert && (
           <motion.div 
@@ -121,14 +119,14 @@ const Certificates = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-[999] flex items-center justify-center p-4 md:p-10 bg-black/90 backdrop-blur-md"
-            onClick={() => setSelectedCert(null)} // Klik luar buat tutup
+            onClick={() => setSelectedCert(null)}
           >
             <motion.div 
               initial={{ scale: 0.9, y: 20 }}
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.9, y: 20 }}
               className="relative max-w-5xl w-full max-h-[80vh] overflow-y-auto bg-white/[0.05] border border-white/10 p-6 md:p-10 rounded-[3rem]"
-              onClick={(e) => e.stopPropagation()} // Biar klik dalem nggak nutup
+              onClick={(e) => e.stopPropagation()}
             >
               <button 
                 className="absolute top-6 right-6 p-2 bg-white/10 rounded-full hover:bg-white/20 transition-colors"
@@ -150,7 +148,7 @@ const Certificates = () => {
                       src={img} 
                       alt={`Cert ${i}`} 
                       className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" 
-                      onError={(e) => { e.target.src = "https://placehold.co/600x400/1a1a1a/ffffff?text=Sertifikat+Belum+Upload"; }} // Fallback kalau foto belum ada
+                      onError={(e) => { e.target.src = "https://placehold.co/600x400/1a1a1a/ffffff?text=Sertifikat+Belum+Upload"; }}
                     />
                   </div>
                 ))}

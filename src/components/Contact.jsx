@@ -1,8 +1,6 @@
 import React, { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { motion } from 'framer-motion';
-
-// Kita cuma pakai Send dari Lucide, kalau ini masih error, nanti kita ganti manual juga.
 import { Send } from 'lucide-react'; 
 
 const Contact = () => {
@@ -16,7 +14,6 @@ const Contact = () => {
 
     emailjs.sendForm('service_d7orxdo', 'template_j12ukp4', form.current, '7-b37vqfHN5dpl443')
       .then(() => {
-          // Ganti teksnya jadi lebih meyakinkan
           setStatus('Pesan terkirim secara Real-time ke Inbox Rizan! ✅');
           form.current.reset();
       }, (error) => {
@@ -24,12 +21,10 @@ const Contact = () => {
       })
       .finally(() => {
           setIsSending(false);
-          // Biar statusnya nggak ilang cepet-cepet, kasih waktu biar dibaca
           setTimeout(() => setStatus(''), 8000);
       });
   };
 
-  // Kumpulan Ikon High-Res (SVG)
   const icons = {
     instagram: "https://api.iconify.design/line-md:instagram.svg?color=%2306b6d4",
     github: "https://api.iconify.design/line-md:github-loop.svg?color=%2306b6d4",
@@ -75,9 +70,9 @@ const Contact = () => {
           <div className="pt-8 flex gap-4 flex-wrap">
             {[
               { img: icons.instagram, link: "https://instagram.com/justrizan_", label: "Personal" },
-              { img: icons.instagram, link: "https://instagram.com/kakang.inc", label: "Brand" },
+              { img: icons.instagram, link: "https://instagram.com/kinc.io", label: "Brand" },
               { img: icons.github, link: "https://github.com/KakangBRXXY", label: "Github" },
-              { img: icons.linkedin, link: "https://linkedin.com", label: "LinkedIn" },
+              { img: icons.linkedin, link: "https://www.linkedin.com/in/ridho-dzakhwan-359b02384", label: "LinkedIn" },
             ].map((social, i) => (
               <motion.a
                 key={i}
@@ -93,7 +88,6 @@ const Contact = () => {
           </div>
         </div>
 
-        {/* FORM TETEP SAMA */}
         <motion.div className="bg-white/[0.02] border border-white/10 p-8 rounded-[2.5rem] backdrop-blur-xl">
           <form ref={form} onSubmit={sendEmail} className="space-y-6">
             <div className="space-y-2">

@@ -1,4 +1,3 @@
-/** @type {import('tailwindcss').Config} */
 export default {
   content: [
     "./index.html",
@@ -7,7 +6,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        dark: '#0a0a0a', // Hitam elegan
+        dark: '#0a0a0a',
       },
     },
   },

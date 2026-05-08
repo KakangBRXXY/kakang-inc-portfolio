@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 const Hero = () => {
   return (
     <section id="home" className="min-h-screen flex flex-col justify-center items-center text-center px-6 relative overflow-hidden">
-      {/* Efek Cahaya Latar (Glow) */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[300px] h-[300px] bg-blue-500/20 blur-[120px] rounded-full pointer-events-none" />
 
       <motion.div
@@ -48,7 +47,6 @@ const Hero = () => {
         </div>
       </motion.div>
 
-      {/* Animated Scroll Down Icon */}
       <motion.div 
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity }}

@@ -11,7 +11,6 @@ const About = () => {
         transition={{ duration: 0.8 }}
         className="grid md:grid-cols-3 gap-12 items-center"
       >
-        {/* Kolom Kiri: Profesional Identity */}
         <div className="order-2 md:order-1 space-y-6">
           <h3 className="text-2xl font-bold shiny-text">Professional Profile</h3>
           <p className="text-gray-400 leading-relaxed text-sm md:text-base">
@@ -32,7 +31,6 @@ const About = () => {
           </div>
         </div>
 
-        {/* Kolom Tengah: Foto & Status */}
         <div className="order-1 md:order-2 flex flex-col items-center">
           <div className="relative group">
             <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
@@ -57,7 +55,6 @@ const About = () => {
           </div>
         </div>
 
-        {/* Kolom Kanan: Branding & Technical Focus */}
         <div className="order-3 space-y-6 text-left md:text-right">
           <h3 className="text-2xl font-bold text-white tracking-tight">Vision & Branding</h3>
           <p className="text-gray-400 leading-relaxed text-sm md:text-base">

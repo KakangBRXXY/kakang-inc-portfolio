@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Monitor, ShoppingCart, Folder } from 'lucide-react'; // Github dihapus
+import { ExternalLink, Monitor, ShoppingCart, Folder } from 'lucide-react';
 
 const projects = [
   {
@@ -11,7 +11,7 @@ const projects = [
     link: "https://github.com/KakangBRXXY" 
   },
   {
-    title: "Aplikasi Kasir (Development)", // Judul diperbarui
+    title: "Aplikasi Kasir (Development)",
     desc: "Sistem POS dengan integrasi API. Saat ini dalam tahap pengembangan optimasi modul payment E-Wallet.",
     tech: ["PHP", "REST API", "JavaScript", "Laravel", "Via Github"],
     icon: <ShoppingCart className="w-6 h-6 text-blue-400" />,
@@ -42,7 +42,6 @@ const Projects = () => {
             whileHover={{ y: -10 }}
             className="group relative bg-white/[0.03] border border-white/10 p-8 rounded-3xl overflow-hidden"
           >
-            {/* Dekorasi Background */}
             <div className="absolute -right-4 -top-4 w-24 h-24 bg-white/5 rounded-full blur-3xl group-hover:bg-cyan-500/20 transition-all duration-500" />
             
             <div className="mb-6 p-3 w-fit bg-white/5 rounded-2xl border border-white/10">

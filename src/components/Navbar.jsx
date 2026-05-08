@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { Download } from 'lucide-react'; // Tambahin import ini
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -23,17 +24,23 @@ const Navbar = () => {
           kakang.inc
         </div>
         
-        <div className="hidden md:flex gap-8 text-sm font-medium text-gray-400">
+        {/* Tambahin items-center biar tombolnya sejajar sama teks menu */}
+        <div className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-400">
           <a href="#home" className="hover:text-white transition">Home</a>
           <a href="#about" className="hover:text-white transition">About</a>
           <a href="#projects" className="hover:text-white transition">Projects</a>
           <a href="#contact" className="hover:text-white transition">Contact</a>
+          
+          {/* TOMBOL CV NYELIP DI SINI */}
+          <a 
+            href="/CV_Ridho_Dzakhwan.pdf" 
+            download
+            className="ml-2 px-8 py-1 bg-white text-black font-semibold rounded-full hover:bg-gray-200 transition]"
+          >
+            CV 
+          </a>
         </div>
 
-        <div className="md:hidden">
-          {/* Icon Menu buat Mobile nanti di sini */}
-          <span className="text-white">☰</span>
-        </div>
       </div>
     </motion.nav>
   );

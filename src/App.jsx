@@ -9,7 +9,6 @@ import Projects from './components/Projects';
 import Certificates from './components/Certificates';
 import Contact from './components/Contact';
 import logoBrand from './assets/logo-brand.png';
-import Particles from './components/Particles';
 
 function App() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
@@ -26,20 +25,6 @@ function App() {
     <div className="bg-dark min-h-screen ...">
       <Navbar /> {/* Tetap ada, tapi ntar kita sembunyiin bagian menunya di layar kecil */}
       <MobileNavigation /> {/* Khusus buat HP */}
-
-      <div className="fixed inset-0 z-0 pointer-events-none">
-  <Particles
-    particleColors={["#ffffff", "#06b6d4"]}
-    particleCount={180}
-    particleSpread={12}
-    speed={0.2}
-    particleBaseSize={100}
-    moveParticlesOnHover={true}
-    alphaParticles={true}
-    disableRotation={false}
-    pixelRatio={1}
-          />
-      </div>
 
     <div className="bg-dark min-h-screen text-white overflow-x-hidden selection:bg-cyan-500/30">
       <motion.div className="fixed top-0 left-0 right-0 h-1 bg-cyan-500 z-[100] origin-left" style={{ scaleX }} />

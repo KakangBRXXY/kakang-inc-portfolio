@@ -1,75 +1,121 @@
 // App.jsx (old file, not used in current code)
 
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect, useState } from 'react';
+import { motion, useScroll, useSpring } from 'framer-motion';
+import Navbar from './components/Navbar';
+import MobileNavigation from './components/MobileNavigation';
+import Hero from './components/Hero';
+import About from './components/About';
+import Skills from './components/Skills';
+import Projects from './components/Projects';
+import Certificates from './components/Certificates';
+import Contact from './components/Contact';
+import logoBrand from './assets/logo-brand.png';
+import Particles from './components/Particles';
 
-const About = () => {
+function App() {
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
+
+  useEffect(() => {
+    const handleMouseMove = (e) => setMousePos({ x: e.clientX, y: e.clientY });
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
+
   return (
-    <section id="about" className="py-20 px-6 max-w-7xl mx-auto">
-      <motion.div 
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-        className="grid md:grid-cols-3 gap-12 items-center"
-      >
-        {/* Kolom Kiri: Identitas & Deskripsi */}
-        <div className="order-2 md:order-1 text-left space-y-6">
-          <h3 className="text-2xl font-bold shiny-text">Who am I?</h3>
-          <p className="text-gray-400 leading-relaxed">
-            "Halo, saya <span className="text-white italic"> Ridho Dzakhwan </span>, akrab disapa Kakang Rizan. Saat ini saya adalah siswa kelas XI jurusan <span className="text-white italic">Rekayasa Perangkat Lunak (RPL)</span>. Saya memiliki dedikasi tinggi dalam mengeksplorasi dunia Frontend Development dan arsitektur <i>API</i>. Fokus utama saya adalah mentransformasi logika pemrograman yang kompleks menjadi antarmuka pengguna yang intuitif, modern, dan fungsional."
-          </p>
-          <div className="space-y-2">
-            <p className="text-sm text-gray-500">Full Name: Ridho Dzakhwan</p>
-            <p className="text-sm text-gray-500">Birth: 11 - May - 2008 (18 years old)</p>
-            <p className="text-sm text-gray-500">Born: Rancabelut - Cimahi - jawabarat, IDN</p>
-            <p className="text-sm text-gray-500">Specialist: Frontend Developer - Website Designer</p>
-          </div>
-        </div>
+    <div className="bg-dark min-h-screen ...">
+      <Navbar /> {/* Tetap ada, tapi ntar kita sembunyiin bagian menunya di layar kecil */}
+      <MobileNavigation /> {/* Khusus buat HP */}
 
-        {/* Kolom Tengah: Foto & Status Ready for PKL */}
-        <div className="order-1 md:order-2 flex flex-col items-center">
-          <div className="relative group">
-            {/* Efek Liquid Glow di Belakang Foto */}
-            <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-cyan-400 rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
+    <div className="bg-dark min-h-screen text-white overflow-x-hidden selection:bg-cyan-500/30">
+      
+      
+      <motion.div
+        className="fixed top-0 left-0 w-12 h-12 bg-cyan-400/40 rounded-full blur-2xl pointer-events-none z-[9999] hidden md:block"
+        animate={{ x: mousePos.x - 24, y: mousePos.y - 24 }}
+      />
+
+      <Navbar />
+      
+      <main>
+        <Hero />
+        <About />
+        <Skills />
+        <Projects />
+        <Certificates />
+        <Contact />
+      </main>
+      
+      <footer className="relative pt-24 pb-10 px-6 border-t border-white/5 bg-black/20 overflow-hidden">
+        <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-cyan-500/5 blur-[120px] pointer-events-none"></div>
+        
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-12 mb-16">
             
-            <div className="relative w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-2 border-white/10">
-              {/* Nanti di sini foto lu, sementara pake placeholder */}
+            <div className="space-y-4">
+              <div className="flex items-center gap-3">
               <img 
-                src="/src/assets/foto-profil.jpg" 
-                alt="Ridho Dzakhwan" 
-                className="w-full h-full object-cover"
+                src={logoBrand} 
+                alt="kakang.inc logo" 
+                className="w-12 h-12 object-contain" 
               />
+              <div>
+                <h4 className="text-xl font-bold tracking-tighter text-white">kakang.inc</h4>
+                <p className="text-[10px] text-gray-500 uppercase tracking-[0.3em]">Digital Identity System</p>
+              </div>
+            </div>
+              <p className="text-gray-400 text-sm max-w-xs leading-relaxed">
+                Membangun solusi digital dari masa depan dengan teknologi masa kini. Mari kita buat Indonesia selangkah lebih maju.
+              </p>
             </div>
 
-            {/* Label Ready for PKL - Efek Liquid Glass */}
-            <motion.div 
-              animate={{ y: [0, -5, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-white/10 backdrop-blur-xl border border-white/20 px-4 py-1 rounded-full text-xs font-bold tracking-widest text-cyan-400 whitespace-nowrap shadow-xl"
-            >
-              READY FOR PKL
-            </motion.div>
+            {/* Sisi Kanan: Quick Links */}
+            <div className="grid grid-cols-2 gap-12 md:gap-24">
+              <div className="space-y-4">
+                <h5 className="text-white text-sm font-bold uppercase tracking-widest">Navigation</h5>
+                <ul className="space-y-2 text-sm text-gray-500">
+                  <li><a href="#home" className="hover:text-cyan-400 transition-colors">Home</a></li>
+                  <li><a href="#about" className="hover:text-cyan-400 transition-colors">About</a></li>
+                  <li><a href="#projects" className="hover:text-cyan-400 transition-colors">Projects</a></li>
+                </ul>
+              </div>
+              <div className="space-y-4">
+                <h5 className="text-white text-sm font-bold uppercase tracking-widest">Connect</h5>
+                <ul className="space-y-2 text-sm text-gray-500">
+                  <li><a href="https://instagram.com/kakang.inc" className="hover:text-cyan-400 transition-colors">Instagram</a></li>
+                  <li><a href="https://github.com/KakangBRXXY" className="hover:text-cyan-400 transition-colors">Github</a></li>
+                  <li><a href="mailto:rizan@kakang.inc" className="hover:text-cyan-400 transition-colors">Email</a></li>
+                </ul>
+              </div>
+            </div>
           </div>
-        </div>
 
-        {/* Kolom Kanan: Skill Ringkas / Branding */}
-        <div className="order-3 text-left md:text-right space-y-6">
-          <h3 className="text-2xl font-bold text-white">Focus</h3>
-          <p className="text-gray-400">
-            "Melalui <span className="text-white italic"> kakang.inc </span>, saya membangun identitas profesional untuk menghadirkan solusi digital yang inovatif. Saya berfokus pada pengembangan aplikasi web terintegrasi yang tidak hanya estetik secara visual, namun juga memiliki performa tinggi serta skalabilitas yang baik melalui pemanfaatan teknologi Full-stack terkini."yang intuitif, modern, dan fungsional."
-          </p>
-          <div className="flex flex-wrap md:justify-end gap-2">
-            <span className="px-3 py-1 bg-white/5 rounded-md text-xs border border-white/10">React + Vite</span>
-            <span className="px-3 py-1 bg-white/5 rounded-md text-xs border border-white/10">JavaScript</span>
-            <span className="px-3 py-1 bg-white/5 rounded-md text-xs border border-white/10">Tailwind</span>
+          <div className="relative border-t border-white/5 pt-10 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div className="order-2 md:order-1 text-center md:text-left">
+              <p className="text-gray-600 text-[10px] uppercase tracking-[0.5em] mb-1">Developed By</p>
+              <p className="text-white text-sm font-medium tracking-tight">
+                Ridho Dzakhwan <span className="text-gray-600">© 2026</span>
+              </p>
+            </div>
+            
+            <div className="order-1 md:order-2 px-4 py-2 bg-white/5 border border-white/10 rounded-full flex items-center gap-3">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+              </span>
+              <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">System Operational</span>
+            </div>
           </div>
         </div>
-      </motion.div>
-    </section>
+      </footer>
+    </div>
+  </div>
   );
-};
+}
 
-export default About;
+export default App;
 
 // certificates.jsx (old file, not used in current code)
 
